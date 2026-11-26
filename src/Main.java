@@ -1,6 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
-import java.net.URI;
+import java.io.BufferedInputStream;
 import javax.sound.sampled.*;
 
 void main() throws IOException, UnsupportedAudioFileException, LineUnavailableException {
@@ -11,7 +11,9 @@ void main() throws IOException, UnsupportedAudioFileException, LineUnavailableEx
     JPanel painel = new JPanel();
     var url = ClassLoader.getSystemResource("pngwing.com.png");
     ImageIcon icone = new ImageIcon(url);
-    var Rickroll = ClassLoader.getSystemResourceAsStream("Rickroll.wav");
+    var Rickroll = new BufferedInputStream(
+            ClassLoader.getSystemResourceAsStream("Rickroll.wav")
+    );
     var RickAudio = AudioSystem.getAudioInputStream(Rickroll);
     Clip Rickclip = AudioSystem.getClip();
     Rickclip.open(RickAudio);
